@@ -1,49 +1,41 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby Minimal TypeScript Starter
-</h1>
+# 77design site with gatsby
 
-## 🚀 Quick start
+Project to generate static site with [Gatsby](https://www.gatsbyjs.com) using content stored in MySQL database
 
-1.  **Create a Gatsby site.**
+## Initial setup 
+We need to have working MySQL server with content to generate site base on it
+In main foder of proejct create files `.env.development` and `.env.production` with database connection details 
+Here is sample structure of this file 
+```
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_USER=user
+DB_PASSWORD=password
+DB_NAME=database-name
+DB_SOCKET=path-to-mysql-socket-file
+```
 
-    Use the Gatsby CLI to create a new site, specifying the minimal TypeScript starter.
+`DB_SOCKET` is optional and helpful option to connect with local database if you face any issues with opening ports
 
-    ```shell
-    # create a new Gatsby site using the minimal TypeScript starter
-    npm init gatsby -- -ts
-    ```
 
-2.  **Start developing.**
+## 🔧 Develop
+To run develpoment enviroment run 
+```
+npm run develop
+```
 
-    Navigate into your new site’s directory and start it up.
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+## 🚧 Generate
 
-3.  **Open the code and start customizing!**
+To generate production site 
+```
+npm run build
+```
 
-    Your site is now running at http://localhost:8000!
+This project is using [`gatsby-plugin-no-javascript-utils`](https://www.gatsbyjs.com/plugins/gatsby-plugin-no-javascript-utils/) to stip generated html completly from Gatsby Javascript 
 
-    Edit `src/pages/index.tsx` to see your site update in real-time!
+## 🚀 Deploy
 
-4.  **Learn more**
+Copy `.html` and `.css` files from `./public` folder to web server
 
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Tutorials](https://www.gatsbyjs.com/docs/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Guides](https://www.gatsbyjs.com/docs/how-to/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter-ts)
 
-## 🚀 Quick start (Netlify)
-
-Deploy this starter with one click on [Netlify](https://app.netlify.com/signup):
-
-[<img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" />](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-minimal-ts)

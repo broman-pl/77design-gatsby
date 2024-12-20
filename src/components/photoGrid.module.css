@@ -1,0 +1,44 @@
+.last-photos {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.last-photo {
+    aspect-ratio: 3 / 2;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.last-photo a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    align-content: center;
+    color: rgba(204, 204, 204, 0.25);
+    font-size: 1.5rem;
+}
+
+.last-photo a:hover {
+    color: rgba(254, 254, 254, 0.95);
+    text-shadow: 0 0 2px #000, 2px 2px 4px #000;
+}
+
+@media (max-width:799px) {
+    .last-photo {
+        width: 100%;
+    }
+
+    .last-photo a {
+        color: rgba(254, 254, 254, 0.95);
+        text-shadow: 2px 2px 4px #222;
+        align-content: end;
+    }
+}
+
+@media (min-width:800px) {
+    .last-photo {
+        width: 50%;
+    }
+}

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "77desing-site",
-  "author": "romanb",
+  "author": "broman",
   "keywords": [
     "gatsby"
   ],
@@ -16,7 +16,12 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@mdx-js/react": "^2.3.0",
     "gatsby": "^5.14.0",
+    "gatsby-plugin-mdx": "^5.14.0",
+    "gatsby-plugin-no-javascript-utils": "^0.13.1",
+    "gatsby-source-filesystem": "^5.14.0",
+    "gatsby-source-mysql": "^2.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
