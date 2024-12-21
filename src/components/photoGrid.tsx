@@ -37,6 +37,35 @@ const PhotoGrid = ({ type }: { type: "Last" | "Popular" }) => {
         }
     `)
 
+/*
+
+query Photos {
+  allMysqlPopularPhotos(limit: 3, sort: {fotoId: DESC}) {
+    nodes {
+      idFoto
+      title
+      file
+    }
+  }
+}
+
+query Photos {
+  allMysqlPopularPhotos(
+    limit: 3
+    sort: {fotoId: DESC}
+    filter: {status: {eq: 1}}
+  ) {
+    nodes {
+      idFoto
+      title
+      file
+    }
+  }
+}
+*/
+
+
+
     const key = `allMysql${type}Photos` as keyof PhotoGridQueryData;
 
     return (

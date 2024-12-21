@@ -25,6 +25,9 @@ const config: GatsbyConfig = {
       }
     },*/
     //'gatsby-plugin-mdx',
+    'gatsby-plugin-image',
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
     {
       resolve: `gatsby-source-mysql`,
       options: {
@@ -57,7 +60,15 @@ const config: GatsbyConfig = {
             name: 'randomPhoto'
           },
           {
-            statement: 'SELECT idFoto, title, file FROM gal_foto',
+//            statement: 'SELECT idFoto, title, file, description, views, lat, lon, seoDescription, location FROM gal_foto',
+            statement: `SELECT *,
+                (SELECT count(*) FROM gal_foto as t2 WHERE t2.dateAdd > t1.dateAdd AND status = 1) as number,
+                (SELECT idFoto FROM gal_foto as t3 WHERE t3.dateAdd < t1.dateAdd AND status = 1 ORDER BY t3.dateAdd DESC LIMIT 0,1) as nextPhoto,
+				        (SELECT idFoto FROM gal_foto as t3 WHERE t3.dateAdd > t1.dateAdd AND status = 1 ORDER BY t3.dateAdd ASC LIMIT 0,1) as prevPhoto,
+                (SELECT title FROM gal_foto as t3 WHERE t3.dateAdd < t1.dateAdd AND status = 1 ORDER BY t3.dateAdd DESC LIMIT 0,1) as nextTitle,
+                (SELECT title FROM gal_foto as t3 WHERE t3.dateAdd > t1.dateAdd AND status = 1 ORDER BY t3.dateAdd ASC LIMIT 0,1) as prevTitle
+                FROM gal_foto as t1
+                LEFT JOIN gal_albums ON albumId = idAlbum`,
             idFieldName: 'idFoto',
             name: 'singlePhoto'
           }

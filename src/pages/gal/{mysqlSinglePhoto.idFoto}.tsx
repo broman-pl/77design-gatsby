@@ -2,30 +2,29 @@ import * as React from 'react'
 import { HeadFC, PageProps, graphql } from "gatsby"
 
 import Layout from '../../components/layout'
+import PhotoView from '../../components/photoView'
 import Seo from '../../components/seo'
 
-import * as styles from './{mysqlSinglePhoto.idFoto}.module.css'
+import { PhotoProps } from '../../types/PhotoProps';
 
 type MySQLPageProps = {
-    mysqlSinglePhoto: {
-      idFoto: number;
-      title: string;
-      file: string;
-    };
-    mysqlRandomPhoto: {
-      idFoto: number;      
-    }
-  };
+  mysqlSinglePhoto: PhotoProps;
+  mysqlRandomPhoto: {
+    idFoto: number;
+  }
+};
 
-const PhotoPost: React.FC<PageProps<MySQLPageProps>> = ({ data }) => {    
-    return (
-        <Layout randomId={data.mysqlRandomPhoto.idFoto}>
-          <div className={styles.fot} style={{ maxWidth: '1200px'}}>
+const PhotoPost: React.FC<PageProps<MySQLPageProps>> = ({ data }) => {
+  return (
+    <Layout randomId={data.mysqlRandomPhoto.idFoto}>
+      <PhotoView photoData={data.mysqlSinglePhoto}></PhotoView>
+    </Layout>
+  )
+}
 
-          </div>
-            <p>{data.mysqlSinglePhoto.title}</p>
-        </Layout>
-    )
+export const Head: HeadFC<MySQLPageProps> = ({ data }) => {
+  console.log(data)
+  return (<Seo title={data.mysqlSinglePhoto.title} />)
 }
 
 export default PhotoPost
@@ -36,6 +35,16 @@ export const query = graphql`
         idFoto,
         title,
         file
+        description, 
+        number, 
+        lat, 
+        lon, 
+        seoDescription, 
+        location,
+        nextPhoto,
+        prevPhoto,
+        nextTitle,
+        prevTitle
     }
     mysqlRandomPhoto {
         idFoto
